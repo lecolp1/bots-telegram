@@ -114,6 +114,7 @@ async def admin_panel(message: types.Message):
 
 
 # ОБРАБОТЧИК ЛЮБЫХ ТЕКСТОВЫХ СООБЩЕНИЙ (ИНТЕГРАЦИЯ ИИ)
+# ОБРАБОТЧИК ЛЮБЫХ ТЕКСТОВЫХ СООБЩЕНИЙ (ИНТЕГРАЦИЯ ИИ)
 @dp.message(F.text)
 async def ai_chat_handler(message: types.Message):
     if not ai_client:
@@ -129,7 +130,7 @@ async def ai_chat_handler(message: types.Message):
         response = await loop.run_in_executor(
             None,
             lambda: ai_client.models.generate_content(
-                model='gemini-2.5-flash',
+             model='gemini-3.8-flash',
                 contents=message.text,
                 config=genai.types.GenerateContentConfig(
                     system_instruction=AI_INSTRUCTION, # Наш промпт-роль
@@ -151,3 +152,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
