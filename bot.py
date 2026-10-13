@@ -1,12 +1,28 @@
 import asyncio
+import os
 from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from dotenv import load_dotenv  # Импортируем библиотеку для чтения .env
 
-TOKEN = "8794866032:AAH1QDNsaTPZdvN8AdRh42Lq25DeKdQ_dRg"
-ADMIN_ID = 945758539  # ваш ID, число без кавычек
+load_dotenv()
+
+TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID")) if os.getenv("ADMIN_ID") else None
+
+bot = Bot(token=TOKEN)
+dp = Dispatcher()
+
+
+import asyncio
+from aiogram import Bot, Dispatcher, F, types
+from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+  
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
